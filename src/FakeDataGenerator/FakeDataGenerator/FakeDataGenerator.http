@@ -1,0 +1,6 @@
+@FakeDataGenerator_HostAddress = http://localhost:5221
+
+GET {{FakeDataGenerator_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
