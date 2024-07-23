@@ -71,7 +71,8 @@ public class PrizeConfigProvider(ILogger<PrizeConfigProvider> logger , TimeProvi
     /// </returns>
     public PrizeConfig GetConfigByPrize(string prizeCode)
     {
-        WithinDay = timeProvider.GetUtcNow().AddHours(-24 + 7).DateTime;
+        var today = timeProvider.GetUtcNow().DateTime;
+        WithinDay = new DateTime(today.Year,today.Month,today.Day,7,0,0);
         if (!_ConfigDict.TryGetValue(prizeCode, out var prizeConfig))
             return new UnknownPrizeConfig(); // BAD Practice , throw unsupportedPrizeException
         return prizeConfig;
